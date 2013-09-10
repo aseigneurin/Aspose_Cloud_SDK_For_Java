@@ -48,7 +48,7 @@ public class Extractor {
 			DocumentTextResponse docResponse = gson.fromJson(strJSON,
 					DocumentTextResponse.class);
 
-			return docResponse.TextItems.List;
+			return docResponse.getTextItems().getList();
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -89,8 +89,8 @@ public class Extractor {
 			DrawingObjectsResponse Response = gson.fromJson(strJSON,
 					DrawingObjectsResponse.class);
 
-			for (com.aspose.cloud.words.List list : Response.DrawingObjects.List) {
-				GetDrawingObject(list.link.Href, outputPath);
+			for (com.aspose.cloud.words.List list : Response.getDrawingObjects().getList()) {
+				GetDrawingObject(list.getlink().getHref(), outputPath);
 
 			}
 		} catch (Exception ex) {
@@ -128,18 +128,18 @@ public class Extractor {
 			DrawingObjectsResponse Response = gson.fromJson(strJSON,
 					DrawingObjectsResponse.class);
 
-			String index = Response.DrawingObject.link.Href.substring(
-					Response.DrawingObject.link.Href.lastIndexOf("/") + 1)
+			String index = Response.getDrawingObject().getlink().getHref().substring(
+					Response.getDrawingObject().getlink().getHref().lastIndexOf("/") + 1)
 					.toString();
 
-			if (Response.DrawingObject.ImageDataLink != null
-					&& Response.DrawingObject.OleDataLink == null) {
+			if (Response.getDrawingObject().getImageDataLink() != null
+					&& Response.getDrawingObject().getOleDataLink() == null) {
 				// build URI to get Image
 				strURI = strURI + "/imageData";// ?format=" +
 												// DrawingObjectsRenderFormat.jpeg;
 				outputPath = outputPath + "\\DrawingObject_" + index + "."
 						+ DrawingObjectsRenderFormat.jpeg;
-			} else if (Response.DrawingObject.OleDataLink != null) {
+			} else if (Response.getDrawingObject().getOleDataLink() != null) {
 				// build URI to get OLE
 				strURI = strURI + "/oleData";// format=" +
 												// DrawingObjectsRenderFormat.jpeg;

@@ -14,9 +14,9 @@ public class ImageResponse
 {
   
 //    public List<LinkResponse> Links;
-    private com.aspose.cloud.pdf.Image Image;
+    private Image Image;
     
     
-    public com.aspose.cloud.pdf.Image getImage(){return Image;}
+    public Image getImage(){return Image;}
    
 }

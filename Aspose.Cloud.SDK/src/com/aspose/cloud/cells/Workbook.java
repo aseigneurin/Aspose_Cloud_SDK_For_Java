@@ -433,6 +433,49 @@ public class Workbook {
 		}
 	}
 
+	 public Name GetName(String name)
+     {
+		 try {
+				// check whether file is set or not
+				if (FileName == "")
+					throw new Exception("No file name specified");
+
+				// build URI
+				String strURI = com.aspose.cloud.common.Product.getBaseProductUri()+ "/cells/" + FileName;
+	             strURI += "/names/"+name;
+
+				// sign URI
+				String signedURI = "";
+				if (this.auth != null) {
+					if (!this.auth.validateAuth()) {
+						System.out.println("Please Specify AppKey and AppSID");
+					} else {
+						signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+								this.auth.getAppSID());
+					}
+				} else {
+					signedURI = Utils.Sign(strURI);
+				}
+
+				InputStream responseStream = Utils.ProcessCommand(signedURI, "GET");
+
+				String strJSON = Utils.StreamToString(responseStream);
+
+				Gson gson = new Gson();
+
+				// Parse the json string to JObject and Deserializes the JSON to a
+				// object.
+				NameResponse nameResponse = gson.fromJson(strJSON,
+						NameResponse.class);
+				return nameResponse.getSName();
+				 
+			}
+
+			catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+}
 	public int GetWorksheetsCount() {
 
 		try {
@@ -990,6 +1033,53 @@ public class Workbook {
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
+			return false;
+		}
+	}
+	public boolean SplitDocument(SplitDocumentFormats format, int from, int to) {
+
+		try {
+			// check whether file is set or not
+			if (FileName == "")
+				throw new Exception("No file name specified");
+
+			// build URI
+			String strURI = com.aspose.cloud.common.Product.getBaseProductUri()
+					+ "/cells/" + FileName;
+            strURI += "/split?" +
+                (format == null ? "" : "format=" + format) +
+                (from == 0 ? "" : "&from=" + from) +
+                (to == 0 ? "" : "&to=" + to);
+			// sign URI
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "POST");
+			String strJSON = Utils.StreamToString(responseStream);
+			Gson gson = new Gson();
+
+			// Parse the json string to JObject and Deserializes the JSON to a
+			// object.
+			BaseResponse baseResponse = gson.fromJson(strJSON,
+					BaseResponse.class);
+
+			if (baseResponse.getCode().equals("200")
+					&& baseResponse.getStatus().equals("OK"))
+				return true;
+			else
+				return false;
+
+		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}

@@ -14,6 +14,13 @@ package com.aspose.cloud.pdf;
 public class Color
 {
     public Color() { }
+    public Color(int a, int r, int g, int b)
+    {
+        A = a;
+        B = b;
+        R = r;
+        G = g;
+    }
 
 //    public List<LinkResponse> Links;
     private int A;

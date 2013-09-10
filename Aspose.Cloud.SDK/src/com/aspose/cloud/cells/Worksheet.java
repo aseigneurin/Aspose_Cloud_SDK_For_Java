@@ -390,6 +390,76 @@ public class Worksheet {
 		}
 
 	}
+	/***********Method  ProtectWorksheet Added by:Zeeshan*******/
+	public Boolean ProtectWorksheet(String password, WorksheetProtectionType type, ProtectionOptions opts)
+	{
+		try
+		{
+			if (FileName == "")
+				throw new Exception("No file name specified");
+
+			// build URI
+			String strURI = com.aspose.cloud.common.Product.getBaseProductUri()
+					+ "/cells/" + FileName ;
+			strURI +=  "/worksheets/" +WorkSheetName + "/protection";
+
+			// sign URI
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			Gson gson = new Gson();
+
+			//serialize the JSON request content
+			WorksheetProtectionRequest protectionRequest = new WorksheetProtectionRequest();
+            protectionRequest.setAllowDeletingColumn ( opts.getAllowDeletingColumn());
+            protectionRequest.setAllowDeletingRow ( opts.getAllowDeletingRow());
+            protectionRequest.setAllowEditArea ( opts.getAllowEditArea());
+            protectionRequest.setAllowFiltering ( opts.getAllowFiltering());
+            protectionRequest.setAllowFormattingCell ( opts.getAllowFormattingCell());
+            protectionRequest.setAllowFormattingColumn ( opts.getAllowFormattingColumn());
+            protectionRequest.setAllowFormattingRow ( opts.getAllowFormattingRow());
+            protectionRequest.setAllowInsertingColumn ( opts.getAllowInsertingColumn());
+            protectionRequest.setAllowInsertingHyperlink ( opts.getAllowInsertingHyperlink());
+            protectionRequest.setAllowInsertingRow ( opts.getAllowInsertingRow());
+            protectionRequest.setAllowSelectingLockedCell ( opts.getAllowSelectingLockedCell());
+            protectionRequest.setAllowSelectingUnlockedCell ( opts.getAllowSelectingUnlockedCell());
+            protectionRequest.setAllowSorting ( opts.getAllowSorting());
+            protectionRequest.setAllowUsingPivotTable ( opts.getAllowUsingPivotTable());
+            protectionRequest.setPassword ( password);
+            protectionRequest.setProtectionType ( type.toString());
+			
+	        String strJSON = "";
+			strJSON = gson.toJson(protectionRequest, WorksheetProtectionRequest.class);
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "PUT",strJSON);
+
+			String strResponse = Utils.StreamToString(responseStream);
+
+			// Parse the json string to JObject
+			BaseResponse baseResponse = gson.fromJson(strResponse,
+					BaseResponse.class);
+
+			if (baseResponse.getCode().equals("200")
+					& baseResponse.getStatus().equals("OK"))
+				return true;
+			else
+				return false;		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+
+
+
+
+	}
+
 
 	// / <summary>
 	// /
@@ -1490,7 +1560,7 @@ public class Worksheet {
 			Gson gson = new Gson();
 
 			String strResponse = Utils.StreamToString(responseStream);
-			
+
 			// Deserializes the JSON to a object.
 			CalculateFormulaResponse formulaResponse = gson.fromJson(
 					strResponse, CalculateFormulaResponse.class);
@@ -1639,7 +1709,96 @@ public class Worksheet {
 		}
 
 	}
+	public boolean AddRow(int rowIndex) {
 
+		try {
+			// check whether file is set or not
+			if (FileName == "")
+				throw new Exception("No file name specified");
+
+			// build URI
+			String strURI = com.aspose.cloud.common.Product.getBaseProductUri()
+					+ "/cells/" + FileName;
+            strURI += "/worksheets/" + WorkSheetName + "/cells/rows/" + rowIndex;
+
+			// sign URI
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "PUT");
+			String strJSON = Utils.StreamToString(responseStream);
+			Gson gson = new Gson();
+
+			// Parse the json string to JObject and Deserializes the JSON to a
+			// object.
+			BaseResponse baseResponse = gson.fromJson(strJSON,
+					BaseResponse.class);
+
+			if (baseResponse.getCode().equals("200")
+					&& baseResponse.getStatus().equals("OK"))
+				return true;
+			else
+				return false;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public boolean EditRow(int rowIndex, int height) {
+
+		try {
+			// check whether file is set or not
+			if (FileName == "")
+				throw new Exception("No file name specified");
+
+			// build URI
+			String strURI = com.aspose.cloud.common.Product.getBaseProductUri()
+					+  "/cells/" + FileName;
+	                strURI += "/worksheets/" + WorkSheetName + "/cells/rows/" + rowIndex + "?Height=" + height;
+
+			// sign URI
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "POST");
+			String strJSON = Utils.StreamToString(responseStream);
+			Gson gson = new Gson();
+
+			// Parse the json string to JObject and Deserializes the JSON to a
+			// object.
+			BaseResponse baseResponse = gson.fromJson(strJSON,
+					BaseResponse.class);
+
+			if (baseResponse.getCode().equals("200")
+					&& baseResponse.getStatus().equals("OK"))
+				return true;
+			else
+				return false;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	public boolean DeleteRow(int rowIndex) {
 
 		try {
@@ -1822,5 +1981,75 @@ public class Worksheet {
 	public String getName() {
 		return Name;
 	}
+	
+	public Boolean UnProtectWorksheet(String password, WorksheetProtectionType type, ProtectionOptions opts)
+	{
+		try
+		{
+			if (FileName == "")
+				throw new Exception("No file name specified");
+
+			// build URI
+			String strURI = com.aspose.cloud.common.Product.getBaseProductUri()
+					+ "/cells/" + FileName ;
+			strURI +=  "/worksheets/" +WorkSheetName + "/protection";
+
+			// sign URI
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			Gson gson = new Gson();
+
+			//serialize the JSON request content
+			WorksheetProtectionRequest protectionRequest = new WorksheetProtectionRequest();
+            protectionRequest.setAllowDeletingColumn ( opts.getAllowDeletingColumn());
+            protectionRequest.setAllowDeletingRow ( opts.getAllowDeletingRow());
+            protectionRequest.setAllowEditArea ( opts.getAllowEditArea());
+            protectionRequest.setAllowFiltering ( opts.getAllowFiltering());
+            protectionRequest.setAllowFormattingCell ( opts.getAllowFormattingCell());
+            protectionRequest.setAllowFormattingColumn ( opts.getAllowFormattingColumn());
+            protectionRequest.setAllowFormattingRow ( opts.getAllowFormattingRow());
+            protectionRequest.setAllowInsertingColumn ( opts.getAllowInsertingColumn());
+            protectionRequest.setAllowInsertingHyperlink ( opts.getAllowInsertingHyperlink());
+            protectionRequest.setAllowInsertingRow ( opts.getAllowInsertingRow());
+            protectionRequest.setAllowSelectingLockedCell ( opts.getAllowSelectingLockedCell());
+            protectionRequest.setAllowSelectingUnlockedCell ( opts.getAllowSelectingUnlockedCell());
+            protectionRequest.setAllowSorting ( opts.getAllowSorting());
+            protectionRequest.setAllowUsingPivotTable ( opts.getAllowUsingPivotTable());
+            protectionRequest.setPassword ( password);
+            protectionRequest.setProtectionType ( type.toString());
+			
+	        String strJSON = "";
+			strJSON = gson.toJson(protectionRequest, WorksheetProtectionRequest.class);
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "DELETE",strJSON);
+
+			String strResponse = Utils.StreamToString(responseStream);
+
+			// Parse the json string to JObject
+			BaseResponse baseResponse = gson.fromJson(strResponse,
+					BaseResponse.class);
+
+			if (baseResponse.getCode().equals("200")
+					& baseResponse.getStatus().equals("OK"))
+				return true;
+			else
+				return false;		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+
+
+
+
+	}
+
 
 }

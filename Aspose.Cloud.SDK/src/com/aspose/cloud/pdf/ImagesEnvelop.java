@@ -16,7 +16,7 @@ public class ImagesEnvelop
 {
 
  //   public List<LinkResponse> Links;
-    private List<com.aspose.cloud.pdf.Image> List;
+    private List<Image> List;
 
-    public List<com.aspose.cloud.pdf.Image> getList(){return List;}
+    public List<Image> getList(){return List;}
 }

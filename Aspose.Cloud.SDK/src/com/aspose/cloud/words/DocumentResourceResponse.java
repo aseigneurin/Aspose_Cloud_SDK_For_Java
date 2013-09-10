@@ -5,5 +5,8 @@
         /// <summary>
         /// Document
         /// </summary>
-        public Document Document ;
+    	private Document _Document;
+    	public Document getDocument(){return _Document;}
+    	public void setDocument(Document Document){_Document=Document;}
+
     }

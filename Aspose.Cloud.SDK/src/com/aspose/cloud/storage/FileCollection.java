@@ -18,8 +18,10 @@ public class FileCollection {
     /// <summary>
     /// Represents a list fo File Objects.
     /// </summary>
-    public FileCollection File;
-    /// <summary>
+    private FileCollection _File;
+    public FileCollection getFile(){return _File;}
+    public void setFile(FileCollection File){_File=File;}
+/// <summary>
     /// returns a list of File objects
     /// </summary>
     
@@ -29,7 +31,7 @@ public class FileCollection {
         try
         {
         //	strJSON=strJSON.replaceFirst("1327228690298-0600", "1327228690298+0600");
-        	Gson gson =new GsonDateParser().createWcfGson();
+        	Gson gson =GsonDateParser.createWcfGson();
             FolderResponse folderResponse = gson.fromJson(strJSON,FolderResponse.class);;
             //	files = folderResponse.Files;
             List<com.aspose.cloud.storage.File> files =folderResponse.getFiles();

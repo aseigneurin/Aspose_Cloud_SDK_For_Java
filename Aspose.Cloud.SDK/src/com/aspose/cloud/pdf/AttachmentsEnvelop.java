@@ -13,7 +13,7 @@ import java.util.List;
 public  class AttachmentsEnvelop
 {
 //    public List<LinkResponse> Links;
-    public List<Attachment> List;
+    private List<Attachment> List;
     
     public List<Attachment> getList(){return List;}
 }

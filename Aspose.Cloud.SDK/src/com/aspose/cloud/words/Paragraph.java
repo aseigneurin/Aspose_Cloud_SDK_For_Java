@@ -6,5 +6,8 @@
         /// <summary>
         /// Text Paragraph of document
         /// </summary>
-        public String Text ;
+        private String _Text;
+        public String getText(){return _Text;}
+        public void setText(String Text){_Text=Text;}
+
     }

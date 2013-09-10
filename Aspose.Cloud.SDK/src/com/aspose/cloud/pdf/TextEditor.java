@@ -518,5 +518,73 @@ public class TextEditor {
 			return 0;
 		}
 	}
+	public String GetSegment(int pageNumber, int fragmentNumber, int segmentNumber) {
+		try {
+
+			// build URI to get page count
+			String strURI = Product.getBaseProductUri() + "/pdf/" + FileName + "/pages/" +
+			pageNumber + "/fragments/" + 
+			fragmentNumber + "/segments/" +
+			segmentNumber;
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "GET");
+
+			String strJSON = Utils.StreamToString(responseStream);
+			
+
+			// Parse and deserializes the JSON to a object.
+			SagmentResponse segmentResponse = gson.fromJson(strJSON,
+					SagmentResponse.class);
+
+			return segmentResponse.getTextItem().getText();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+	}
+	public int GetAllSegmentCount(int pageNumber, int fragmentNumber) {
+		try {
+
+			// build URI to get page count
+			String strURI = Product.getBaseProductUri() + "/pdf/" + FileName + 
+					"/pages/" + pageNumber +
+					"/fragments/" + fragmentNumber + 
+					"/segments";
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "GET");
+
+			String strJSON = Utils.StreamToString(responseStream);
+			;
+
+			// Parse and deserializes the JSON to a object.
+			TextItemsResponse textItemsResponse = gson.fromJson(strJSON,
+					TextItemsResponse.class);
+
+			return textItemsResponse.getTextItems().getList().size();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
 
 }

@@ -4,6 +4,7 @@
 package com.aspose.cloud.pdf;
 
 import java.lang.String;
+import java.util.List;
 /**
  * @author Mudassir
  *
@@ -15,7 +16,10 @@ public class TextItem
 {
     public TextItem() { }
 
- //   public List<LinkResponse> Links { get; set; }
+    private List<LinkResponse> _Links;
+    public List<LinkResponse> getLinks(){return _Links;}
+    public void setLinks(List<LinkResponse> Links){_Links=Links;}
+
     private TextFormat Format;
     private String Text;
     

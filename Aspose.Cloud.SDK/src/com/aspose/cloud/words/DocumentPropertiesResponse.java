@@ -9,10 +9,12 @@ import java.util.List;
         /// Link Response related to document properties
         /// <link href="http://api.saaspose.com/v1.0/words/TestProperties.doc/documentProperties/Author" rel="self" />
         /// </summary>
-        public LinkResponse link ;
-
-        /// <summary>
-        /// Document Property
-        /// </summary>
-        public List<DocumentProperty> List;
+        private LinkResponse _link ;
+        private List<DocumentProperty> _List;
+        
+        public LinkResponse getlink(){return _link;} 
+        public List<DocumentProperty> getList(){return _List;}
+        
+        public void setlink (LinkResponse link){_link=link;}
+        public void setList(List<DocumentProperty> List){_List=List;}
     }

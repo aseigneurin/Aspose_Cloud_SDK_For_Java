@@ -962,5 +962,472 @@ public class Document {
 			return false;
 		}
 	}
+	public PdfDocument GetDocument()
+	{ 
+		try {
+			// check whether file is set or not
+			if (FileName == "")
+				throw new Exception("No file name specified");
 
+			// build URI
+			String strURI = Product.getBaseProductUri()  + "/pdf/" + FileName;
+
+
+			// sign URI
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "GET");
+
+			String strJSON = Utils.StreamToString(responseStream);
+
+			Gson gson = new Gson();
+
+			DocumentResponse docResponse = gson.fromJson(strJSON,
+					DocumentResponse.class);
+
+			return docResponse.getDocument();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public boolean InsertFormField(FormField formField)
+	{
+		try {
+			// check whether file is set or not
+			if (FileName == "")
+				throw new Exception("No file name specified");
+
+			// build URI
+			String strURI = Product.getBaseProductUri()  + "/pdf/" + FileName + "/fields/"+formField.getName();
+
+			// sign URI
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			Gson gson = new Gson();
+
+
+			String strJSON = "";
+			strJSON = gson.toJson(formField, FormField.class);
+
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "PUT",strJSON);
+
+			String strResponse = Utils.StreamToString(responseStream);
+
+			// Parse the json string to JObject
+			BaseResponse baseResponse = gson.fromJson(strResponse,
+					BaseResponse.class);
+
+			if (baseResponse.getCode().equals("200")
+					& baseResponse.getStatus().equals("OK"))
+				return true;
+			else
+				return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public boolean InsertFormFields(FormFields formField)
+	{
+		try {
+			// check whether file is set or not
+			if (FileName == "")
+				throw new Exception("No file name specified");
+
+			// build URI
+			String strURI = Product.getBaseProductUri()  + "/pdf/" + FileName + "/fields";
+
+			// sign URI
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			Gson gson = new Gson();
+
+
+			String strJSON = "";
+			strJSON = gson.toJson(formField, FormFields.class);
+
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "PUT",strJSON);
+
+			String strResponse = Utils.StreamToString(responseStream);
+
+			// Parse the json string to JObject
+			BaseResponse baseResponse = gson.fromJson(strResponse,
+					BaseResponse.class);
+
+			if (baseResponse.getCode().equals("200")
+					& baseResponse.getStatus().equals("OK"))
+				return true;
+			else
+				return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public boolean SaveAsTiff(SaveAsTiffOptions imageOptions, String folderName)
+	{
+		try {
+			// check whether file is set or not
+			if (FileName == "")
+				throw new Exception("No file name specified");
+
+			// build URI
+			String strURI = Product.getBaseProductUri()  + "/pdf/" + FileName + "/SaveAs/tiff?folder=" + folderName;
+
+			// sign URI
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			Gson gson = new Gson();
+
+
+			String strJSON = "";
+			strJSON = gson.toJson(imageOptions, SaveAsTiffOptions.class);
+
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "PUT",strJSON);
+
+			String strResponse = Utils.StreamToString(responseStream);
+
+			// Parse the json string to JObject
+			BaseResponse baseResponse = gson.fromJson(strResponse,
+					BaseResponse.class);
+
+			if (baseResponse.getCode().equals("200")
+					& baseResponse.getStatus().equals("OK"))
+				return true;
+			else
+				return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public boolean SaveAsTiff(String outputFile, String compression, String folderName)
+	{
+		try {
+			// check whether file is set or not
+			if (FileName == "")
+				throw new Exception("No file name specified");
+
+			// build URI
+			String strURI = Product.getBaseProductUri()  + "/pdf/" + FileName + "/SaveAs/tiff?resultFile=" + outputFile + "&compression=" + compression + "&folder=" + folderName;
+
+			// sign URI
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			Gson gson = new Gson();
+
+
+			//String strJSON = "";
+			//strJSON = gson.toJson(imageOptions, SaveAsTiffOptions.class);
+
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "PUT");
+
+			String strResponse = Utils.StreamToString(responseStream);
+
+			// Parse the json string to JObject
+			BaseResponse baseResponse = gson.fromJson(strResponse,
+					BaseResponse.class);
+
+			if (baseResponse.getCode().equals("200")
+					& baseResponse.getStatus().equals("OK"))
+				return true;
+			else
+				return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public LinkResponse[] SplitDocument()
+	{
+		try {
+			// check whether file is set or not
+			if (FileName == "")
+				throw new Exception("No file name specified");
+
+			// build URI
+			String strURI = Product.getBaseProductUri()  + "/pdf/" + FileName + "/split";
+
+			// sign URI
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			Gson gson = new Gson();
+
+
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "POST");
+
+			String strResponse = Utils.StreamToString(responseStream);
+
+			// Parse the json string to JObject
+			SplitPDFResponse PDFResponse = gson.fromJson(strResponse,
+					SplitPDFResponse.class);
+
+			return PDFResponse.getResult().getDocuments();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public LinkResponse[] SplitDocument(int from, int to)
+	{
+		try {
+			// check whether file is set or not
+			if (FileName == "")
+				throw new Exception("No file name specified");
+
+			// build URI
+			String strURI = Product.getBaseProductUri()   + "/pdf/" + FileName + "/split?from=" + from + "&to=" + to;
+
+			// sign URI
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			Gson gson = new Gson();
+
+
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "POST");
+
+			String strResponse = Utils.StreamToString(responseStream);
+
+			// Parse the json string to JObject
+			SplitPDFResponse PDFResponse = gson.fromJson(strResponse,
+					SplitPDFResponse.class);
+
+			return PDFResponse.getResult().getDocuments();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public LinkResponse[] SplitDocument(int from, int to, SplitDocumentFormat format)
+	{
+		try {
+			// check whether file is set or not
+			if (FileName == "")
+				throw new Exception("No file name specified");
+
+			// build URI
+			String strURI = Product.getBaseProductUri()   + "/pdf/" + FileName + "/split?from=" + from + "&to=" + to + "&format=" + format.toString();
+
+			// sign URI
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			Gson gson = new Gson();
+
+
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "POST");
+
+			String strResponse = Utils.StreamToString(responseStream);
+
+			// Parse the json string to JObject
+			SplitPDFResponse PDFResponse = gson.fromJson(strResponse,
+					SplitPDFResponse.class);
+
+			return PDFResponse.getResult().getDocuments();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public boolean AddStamp(StampRequest stampRequest)
+	{
+		try {
+			// check whether file is set or not
+			if (FileName == "")
+				throw new Exception("No file name specified");
+
+			// build URI
+			String strURI = Product.getBaseProductUri()  + "/pdf/" + FileName + "/pages/" + stampRequest.getPageIndex() + "/stamp/";
+
+			// sign URI
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			Gson gson = new Gson();
+			String strJSON = "";
+			strJSON = gson.toJson(stampRequest, StampRequest.class);
+
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "PUT",strJSON);
+
+			String strResponse = Utils.StreamToString(responseStream);
+
+			BaseResponse baseResponse = gson.fromJson(strResponse,								BaseResponse.class);
+
+			if (baseResponse.getCode().equals("200")
+					& baseResponse.getStatus().equals("OK"))
+				return true;
+			else
+				return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public boolean AddStampWithTextState(StampRequest stampRequest)
+	{
+		try {
+			// check whether file is set or not
+			if (FileName == "")
+				throw new Exception("No file name specified");
+
+			// build URI
+			String strURI = Product.getBaseProductUri()  + "/pdf/" + FileName + "/pages/" + stampRequest.getPageIndex() + "/stamp/";
+
+			// sign URI
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			Gson gson = new Gson();
+			String strJSON = "";
+			strJSON = gson.toJson(stampRequest, StampRequest.class);
+
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "PUT",strJSON);
+
+			String strResponse = Utils.StreamToString(responseStream);
+
+			BaseResponse baseResponse = gson.fromJson(strResponse,								BaseResponse.class);
+
+			if (baseResponse.getCode().equals("200")
+					& baseResponse.getStatus().equals("OK"))
+				return true;
+			else
+				return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public int GetTotalWordCount()
+	{ 
+		try {
+			// check whether file is set or not
+			if (FileName == "")
+				throw new Exception("No file name specified");
+
+			// build URI
+			String strURI = Product.getBaseProductUri() + "/pdf/" + FileName + "/Pages";
+			strURI += "/wordCount";
+            
+
+			// sign URI
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "GET");
+
+			String strJSON = Utils.StreamToString(responseStream);
+
+			Gson gson = new Gson();
+
+			WordsPerPage wordsResponse = gson.fromJson(strJSON,	WordsPerPage.class);
+
+			 int count = 0;
+             for (WordResponse wordResponse : wordsResponse.getWordsPerPage().getList())
+                 count += wordResponse.getCount();
+             return count;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
 }

@@ -8,10 +8,10 @@ public class Hyperlink
 
         }
 
-        public String Address ;
-        public CellArea Area ;
-        public String ScreenTip ;
-        public String TextToDisplay ;
+        private String Address ;
+        private CellArea Area ;
+        private String ScreenTip ;
+        private String TextToDisplay ;
         
         
         public String getAddress(){return Address;}

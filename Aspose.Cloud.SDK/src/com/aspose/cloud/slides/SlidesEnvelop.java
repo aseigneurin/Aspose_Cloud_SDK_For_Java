@@ -15,12 +15,12 @@ public class SlidesEnvelop
 {
 
     private List<String> AlternateLinks;
-    private List<String> Links;
-    private String SelfUri;
+    private List<LinkResponse> Links;
+    private UriResponse SelfUri;
     private List<SlideResponse> SlideList;
     
     public List<String> getAlternateLinks(){return AlternateLinks;}
-    public List<String> getLinks(){return Links;}
+    public List<LinkResponse> getLinks(){return Links;}
     public List<SlideResponse> getSlideList(){return SlideList;}
-    public String getSelfUri(){return SelfUri;}
+    public UriResponse getSelfUri(){return SelfUri;}
 }

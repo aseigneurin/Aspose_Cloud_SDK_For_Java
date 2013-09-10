@@ -2,5 +2,8 @@ package com.aspose.cloud.words;
 
 public class List
 {
-    public LinkResponse link;
+	private LinkResponse _link;
+	public LinkResponse getlink(){return _link;}
+	public void setlink(LinkResponse link){_link=link;}
+
 }

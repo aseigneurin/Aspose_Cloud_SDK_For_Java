@@ -3,7 +3,7 @@ package com.aspose.cloud.slides;
 import com.aspose.cloud.common.BaseResponse;
 
 public class FontSchemeResponse extends BaseResponse {
-	public FontScheme FontScheme;
+	private FontScheme FontScheme;
 
 	public FontScheme getFontScheme() {
 		return FontScheme;

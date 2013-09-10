@@ -12,7 +12,7 @@ package com.aspose.cloud.pdf;
 /// </summary>
 public class PdfLinksResponse extends com.aspose.cloud.common.BaseResponse
 {
-    public PdfLinksEnvelop Links;
+    private PdfLinksEnvelop Links;
     public PdfLinksEnvelop getLinks(){return Links;}
 
 }

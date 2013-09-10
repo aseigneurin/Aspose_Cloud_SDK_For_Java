@@ -1,12 +1,12 @@
 package com.aspose.cloud.slides;
 
 public class Placeholder {
-	public UriResponse SelfUri;
-	public int Index;
-	public Orientation Orientation;
-	public Size Size;
-	public Type Type;
-	public ShapeURI Shape;
+	private UriResponse SelfUri;
+	private int Index;
+	private Orientation Orientation;
+	private Size Size;
+	private Type Type;
+	private ShapeURI Shape;
 
 	public UriResponse getSelfUri() {
 		return SelfUri;

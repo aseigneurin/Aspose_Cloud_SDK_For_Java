@@ -2,5 +2,8 @@
 
     public class MergeFieldResponse extends com.aspose.cloud.common.BaseResponse
     {
-        public FieldNames FieldNames;
+    	private FieldNames _FieldNames;
+    	public FieldNames getFieldNames(){return _FieldNames;}
+    	public void setFieldNames(FieldNames FieldNames){_FieldNames=FieldNames;}
+
     }

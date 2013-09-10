@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.aspose.cloud.slides;
 
 import java.io.InputStream;
@@ -973,6 +970,145 @@ public class Document {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
+		}
+
+	}
+	public boolean MergeDocuments(String[] sourceFiles) {
+		try
+
+		{
+			String mergedFileName = FileName;
+
+			if (sourceFiles.length < 1)
+			{
+				throw new Exception("One or more files are requred to merge.");
+			}
+			// build URI to remove single property
+			String strURI = Product.getBaseProductUri() + "/slides/" + mergedFileName + "/merge";
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			SourceFilesList sourcefileslist = new SourceFilesList();
+			sourcefileslist.setList( sourceFiles);
+
+			String strJSON = "";
+			strJSON = gson.toJson(sourcefileslist,
+					SourceFilesList.class);
+
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "POST",
+					strJSON);
+
+			String strResponse = Utils.StreamToString(responseStream);
+			// Parse and deserialize the JSON to a object.
+			BaseResponse baseResponse = gson.fromJson(strResponse,
+					BaseResponse.class);
+			if (baseResponse.getCode().equals("200")) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public Slide GetSlide(int slideNumber) {
+		try {
+			// build URI to get slide count
+
+			String strURI = Product.getBaseProductUri()+ "/slides/" + FileName + "/slides/" + slideNumber;
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "GET");
+
+			String strJSON = Utils.StreamToString(responseStream);
+
+			// Parse and deserialize the JSON to a object.
+			SlideDetailResponse slidesResponse = gson.fromJson(strJSON,
+					SlideDetailResponse.class);
+
+			return slidesResponse.getSlide();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+	public boolean DeleteSlide(int slideNumber) {
+		try {
+			String strURI = Product.getBaseProductUri() + "/slides/" + FileName + "/slides/" + slideNumber;
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			InputStream responseStream = Utils.ProcessCommand(signedURI,
+					"DELETE");
+			String strResponse = Utils.StreamToString(responseStream);
+			BaseResponse baseResponse = gson.fromJson(strResponse,
+					BaseResponse.class);
+			if (baseResponse.getCode().equals("200")) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+
+	}
+	public Theme GetTheme(int slideNumber) {
+		try {
+			// build URI to get slide count
+
+			String strURI = Product.getBaseProductUri()+ "/slides/" + FileName + "/slides/" + slideNumber + "/theme";
+			String signedURI = "";
+			if (this.auth != null) {
+				if (!this.auth.validateAuth()) {
+					System.out.println("Please Specify AppKey and AppSID");
+				} else {
+					signedURI = Utils.Sign(strURI, this.auth.getAppKey(),
+							this.auth.getAppSID());
+				}
+			} else {
+				signedURI = Utils.Sign(strURI);
+			}
+			InputStream responseStream = Utils.ProcessCommand(signedURI, "GET");
+
+			String strJSON = Utils.StreamToString(responseStream);
+
+			// Parse and deserialize the JSON to a object.
+			ThemeResponse themeResponse = gson.fromJson(strJSON,
+					ThemeResponse.class);
+
+			return themeResponse.getTheme();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 
 	}

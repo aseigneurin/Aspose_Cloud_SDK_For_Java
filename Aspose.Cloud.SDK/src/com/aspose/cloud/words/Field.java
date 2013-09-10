@@ -125,7 +125,7 @@ public class Field {
 					MergeFieldResponse.class);
 
 			// return document property
-			return Response.FieldNames.Names;
+			return Response.getFieldNames().getNames();
 
 		} catch (Exception ex) {
 			ex.printStackTrace();

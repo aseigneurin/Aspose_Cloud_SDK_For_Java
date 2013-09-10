@@ -19,7 +19,10 @@ public class Shape {
 	private String AlternativeText;
 	private float Height;
 	private boolean Hidden;
-	private String Name;
+	private String _Name;
+	public String getName(){return _Name;}
+	public void setName(String Name){_Name=Name;}
+
 	private float Width;
 	private float X;
 	private float Y;

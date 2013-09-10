@@ -395,7 +395,11 @@ public class AnnotationEditor {
 			BookmarkResponse bookmarkResponse = gson.fromJson(strJSON,
 					BookmarkResponse.class);
 
-			return false;
+			if (bookmarkResponse.getCode().equals("200")
+					& bookmarkResponse.getStatus().equals("OK"))
+				return true;
+			else
+				return false;
 		} catch (Exception ex) {
 
 			return true;

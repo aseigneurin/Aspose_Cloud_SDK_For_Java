@@ -159,7 +159,7 @@ import com.google.gson.Gson;
              
           	  
                 //sign URI
-                signedURI = Utils.Sign(baseResponse.DocumentLink.Href + "?format=doc");
+                signedURI = Utils.Sign(baseResponse.getDocumentLink().getHref() + "?format=doc");
 
                 //get response stream
                 responseStream = Utils.ProcessCommand(signedURI, "GET");

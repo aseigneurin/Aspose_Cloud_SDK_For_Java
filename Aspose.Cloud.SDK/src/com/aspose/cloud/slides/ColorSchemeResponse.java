@@ -3,7 +3,7 @@ package com.aspose.cloud.slides;
 import com.aspose.cloud.common.BaseResponse;
 
 public class ColorSchemeResponse extends BaseResponse {
-	public ColorScheme ColorScheme;
+	private ColorScheme ColorScheme;
 
 	public ColorScheme getColorScheme() {
 		return ColorScheme;

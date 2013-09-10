@@ -1,10 +1,10 @@
 package com.aspose.cloud.slides;
 
 public class PlaceholderURI {
-	public String Href;
-	public String Relation;
-	public String LinkType;
-	public String Title;
+	private String Href;
+	private String Relation;
+	private String LinkType;
+	private String Title;
 
 	public String getHref() {
 		return Href;

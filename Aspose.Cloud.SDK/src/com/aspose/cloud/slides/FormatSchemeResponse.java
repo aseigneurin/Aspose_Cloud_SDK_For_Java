@@ -3,7 +3,7 @@ package com.aspose.cloud.slides;
 import com.aspose.cloud.common.BaseResponse;
 
 public class FormatSchemeResponse extends BaseResponse {
-	public FormatScheme FormatScheme;
+	private FormatScheme FormatScheme;
 
 	public FormatScheme getFormatScheme() {
 		return FormatScheme;

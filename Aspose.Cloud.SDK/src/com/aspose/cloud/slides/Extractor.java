@@ -429,7 +429,7 @@ public class Extractor {
 			String strJSON = Utils.StreamToString(responseStream);
 			ColorSchemeResponse colorSchemeResponse = gson.fromJson(strJSON,
 					ColorSchemeResponse.class);
-			return colorSchemeResponse.ColorScheme;
+			return colorSchemeResponse.getColorScheme();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -460,7 +460,7 @@ public class Extractor {
 			String strJSON = Utils.StreamToString(responseStream);
 			ColorSchemeResponse colorSchemeResponse = gson.fromJson(strJSON,
 					ColorSchemeResponse.class);
-			return colorSchemeResponse.ColorScheme;
+			return colorSchemeResponse.getColorScheme();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -487,7 +487,7 @@ public class Extractor {
 			String strJSON = Utils.StreamToString(responseStream);
 			FontSchemeResponse fontSchemeResponse = gson.fromJson(strJSON,
 					FontSchemeResponse.class);
-			return fontSchemeResponse.FontScheme;
+			return fontSchemeResponse.getFontScheme();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -518,7 +518,7 @@ public class Extractor {
 			String strJSON = Utils.StreamToString(responseStream);
 			FontSchemeResponse fontSchemeResponse = gson.fromJson(strJSON,
 					FontSchemeResponse.class);
-			return fontSchemeResponse.FontScheme;
+			return fontSchemeResponse.getFontScheme();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -545,7 +545,7 @@ public class Extractor {
 			String strJSON = Utils.StreamToString(responseStream);
 			FormatSchemeResponse fontSchemeResponse = gson.fromJson(strJSON,
 					FormatSchemeResponse.class);
-			return fontSchemeResponse.FormatScheme;
+			return fontSchemeResponse.getFormatScheme();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -576,7 +576,7 @@ public class Extractor {
 			String strJSON = Utils.StreamToString(responseStream);
 			FormatSchemeResponse fontSchemeResponse = gson.fromJson(strJSON,
 					FormatSchemeResponse.class);
-			return fontSchemeResponse.FormatScheme;
+			return fontSchemeResponse.getFormatScheme();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -603,7 +603,7 @@ public class Extractor {
 			String strJSON = Utils.StreamToString(responseStream);
 			PlaceholdersResponse placeholderResponse = gson.fromJson(strJSON,
 					PlaceholdersResponse.class);
-			return placeholderResponse.Placeholders.PlaceholderLinks.size();
+			return placeholderResponse.getPlaceholders().getPlaceholderLinks().size();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return -1;
@@ -640,7 +640,7 @@ public class Extractor {
 			String strJSON = Utils.StreamToString(responseStream);
 			PlaceholdersResponse placeholderResponse = gson.fromJson(strJSON,
 					PlaceholdersResponse.class);
-			return placeholderResponse.Placeholders.PlaceholderLinks.size();
+			return placeholderResponse.getPlaceholders().getPlaceholderLinks().size();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return -1;
@@ -669,7 +669,7 @@ public class Extractor {
 			String strJSON = Utils.StreamToString(responseStream);
 			PlaceholderResponse placeholderResponse = gson.fromJson(strJSON,
 					PlaceholderResponse.class);
-			return placeholderResponse.Placeholder;
+			return placeholderResponse.getPlaceholder();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -707,7 +707,7 @@ public class Extractor {
 			String strJSON = Utils.StreamToString(responseStream);
 			PlaceholderResponse placeholderResponse = gson.fromJson(strJSON,
 					PlaceholderResponse.class);
-			return placeholderResponse.Placeholder;
+			return placeholderResponse.getPlaceholder();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

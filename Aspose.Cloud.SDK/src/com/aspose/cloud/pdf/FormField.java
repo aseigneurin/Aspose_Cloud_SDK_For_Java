@@ -25,6 +25,10 @@ public class FormField
     public int getType(){return Type;}
     public String[] getValues(){return Values;}
     public String[] getSelectedItems(){return SelectedItems;}
-       
+    
+    public void setName(String name){Name=name;}
+    public void setType(int type){Type=type;}
+    public void setValues(String[] values){ Values=values;}
+     
 
 }

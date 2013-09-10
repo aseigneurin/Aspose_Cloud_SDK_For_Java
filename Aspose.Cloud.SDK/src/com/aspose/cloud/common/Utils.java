@@ -157,13 +157,13 @@ public class Utils {
 			byte[] buf = getBytesFromFile(localFile);
 			HttpURLConnection m_connection;
 			m_connection = (HttpURLConnection) url.openConnection();
-			String parameters = "data=some_post_data";
+			//String parameters = "data=some_post_data";
 			m_connection.setDoOutput(true);
 			m_connection.setRequestMethod("PUT");
 			m_connection.setRequestProperty("Accept", "text/json");
 			m_connection.setRequestProperty("Content-Type",
 					"MultiPart/Form-Data");
-			byte bytes[] = parameters.getBytes();
+			//byte bytes[] = parameters.getBytes();
 			m_connection.setRequestProperty("Content-length", "" + buf.length);
 			m_connection.connect();
 			java.io.OutputStream out = m_connection.getOutputStream();
@@ -301,7 +301,7 @@ public class Utils {
 			String strHttpCommand, String strContent, String ContentType) {
 		try {
 
-			byte[] arr = IOUtils.toByteArray(strContent);
+			byte[] arr = strContent.getBytes();
 
 			URL address = new URL(strURI);
 			HttpURLConnection httpCon = (HttpURLConnection) address

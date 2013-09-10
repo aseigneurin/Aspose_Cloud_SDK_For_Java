@@ -1,7 +1,7 @@
 package com.aspose.cloud.slides;
 
 public class PlaceholdersResponse {
-	public PlaceholdersEnvelop Placeholders;
+	private PlaceholdersEnvelop Placeholders;
 
 	public PlaceholdersEnvelop getPlaceholders() {
 		return Placeholders;
