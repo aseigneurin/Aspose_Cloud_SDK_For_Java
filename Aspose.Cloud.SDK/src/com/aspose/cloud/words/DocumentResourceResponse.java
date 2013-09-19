@@ -5,8 +5,8 @@
         /// <summary>
         /// Document
         /// </summary>
-    	private Document _Document;
-    	public Document getDocument(){return _Document;}
-    	public void setDocument(Document Document){_Document=Document;}
+    	private Document Document;
+    	public Document getDocument(){return Document;}
+    	public void setDocument(Document Document){this.Document=Document;}
 
     }

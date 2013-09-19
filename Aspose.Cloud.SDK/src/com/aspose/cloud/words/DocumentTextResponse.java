@@ -5,8 +5,8 @@
         /// <summary>
         /// Document text items response
         /// </summary>
-    	private DocumentTextItemsResponse _TextItems;
-    	public DocumentTextItemsResponse getTextItems(){return _TextItems;}
-    	public void setTextItems(DocumentTextItemsResponse TextItems){_TextItems=TextItems;}
+    	private DocumentTextItemsResponse TextItems;
+    	public DocumentTextItemsResponse getTextItems(){return TextItems;}
+    	public void setTextItems(DocumentTextItemsResponse TextItems){this.TextItems=TextItems;}
 
     }

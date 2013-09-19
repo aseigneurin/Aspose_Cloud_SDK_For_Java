@@ -1,12 +1,12 @@
 package com.aspose.cloud.words;
 
 public class ProtectionResponse extends com.aspose.cloud.common.BaseResponse {
-	private DocumentLink _DocumentLink;
-	public DocumentLink getDocumentLink(){return _DocumentLink;}
-	public void setDocumentLink(DocumentLink DocumentLink){_DocumentLink=DocumentLink;}
+	private DocumentLink DocumentLink;
+	public DocumentLink getDocumentLink(){return DocumentLink;}
+	public void setDocumentLink(DocumentLink DocumentLink){this.DocumentLink=DocumentLink;}
 
-	private ProtectionData _ProtectionData;
-	public ProtectionData getProtectionData(){return _ProtectionData;}
-	public void setProtectionData(ProtectionData ProtectionData){_ProtectionData=ProtectionData;}
+	private ProtectionData ProtectionData;
+	public ProtectionData getProtectionData(){return ProtectionData;}
+	public void setProtectionData(ProtectionData ProtectionData){this.ProtectionData=ProtectionData;}
 
 }

@@ -5,16 +5,16 @@
         /// <summary>
         /// Document Properties response
         /// </summary>
-    	private DocumentPropertiesResponse _DocumentProperties;
-    	public DocumentPropertiesResponse getDocumentProperties(){return _DocumentProperties;}
-    	public void setDocumentProperties(DocumentPropertiesResponse DocumentProperties){_DocumentProperties=DocumentProperties;}
+    	private DocumentPropertiesResponse DocumentProperties;
+    	public DocumentPropertiesResponse getDocumentProperties(){return DocumentProperties;}
+    	public void setDocumentProperties(DocumentPropertiesResponse DocumentProperties){this.DocumentProperties=DocumentProperties;}
 
 
         /// <summary>
         /// Document Property response
         /// </summary>
-    	private DocumentProperty _DocumentProperty;
-    	public DocumentProperty getDocumentProperty(){return _DocumentProperty;}
-    	public void setDocumentProperty(DocumentProperty DocumentProperty){_DocumentProperty=DocumentProperty;}
+    	private DocumentProperty DocumentProperty;
+    	public DocumentProperty getDocumentProperty(){return DocumentProperty;}
+    	public void setDocumentProperty(DocumentProperty DocumentProperty){this.DocumentProperty=DocumentProperty;}
 
     }

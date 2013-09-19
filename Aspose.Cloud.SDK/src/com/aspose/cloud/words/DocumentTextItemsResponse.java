@@ -10,17 +10,17 @@ import java.util.List;
         /// Link Response related to document text
         /// <link href="http://api.saaspose.com/v1.0/words/TestTextItems.doc/textItems" rel="self" />
         /// </summary>
-        private LinkResponse _link;
-        public LinkResponse getlink(){return _link;}
-        public void setlink(LinkResponse link){_link=link;}
+        private LinkResponse link;
+        public LinkResponse getlink(){return link;}
+        public void setlink(LinkResponse link){this.link=link;}
 
 
         /// <summary>
         /// TextItem of document
         /// </summary>
-        private List<Paragraph> _List;
-        public List<Paragraph> getList(){return _List;}
-        public void setList(List<Paragraph> List){_List=List;}
+        private List<Paragraph> List;
+        public List<Paragraph> getList(){return List;}
+        public void setList(List<Paragraph> List){this.List=List;}
 
 
     }

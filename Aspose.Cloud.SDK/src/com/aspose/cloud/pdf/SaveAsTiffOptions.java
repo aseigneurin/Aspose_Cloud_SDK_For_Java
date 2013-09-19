@@ -1,68 +1,68 @@
 package com.aspose.cloud.pdf;
 
 public class SaveAsTiffOptions {
-	private float _Brightness;
-	public float getBrightness(){return _Brightness;}
-	public void setBrightness(float Brightness){_Brightness=Brightness;}
+	private float Brightness;
+	public float getBrightness(){return Brightness;}
+	public void setBrightness(float Brightness){this.Brightness=Brightness;}
 
-	private String _Compression;
-	public String getCompression(){return _Compression;}
-	public void setCompression(String Compression){_Compression=Compression;}
+	private String Compression;
+	public String getCompression(){return Compression;}
+	public void setCompression(String Compression){this.Compression=Compression;}
 
-	private int _ColorDepth;
-	public int getColorDepth(){return _ColorDepth;}
-	public void setColorDepth(int ColorDepth){_ColorDepth=ColorDepth;}
+	private int ColorDepth;
+	public int getColorDepth(){return ColorDepth;}
+	public void setColorDepth(int ColorDepth){this.ColorDepth=ColorDepth;}
 
-	private int _LeftMargin;
-	public int getLeftMargin(){return _LeftMargin;}
-	public void setLeftMargin(int LeftMargin){_LeftMargin=LeftMargin;}
+	private int LeftMargin;
+	public int getLeftMargin(){return LeftMargin;}
+	public void setLeftMargin(int LeftMargin){this.LeftMargin=LeftMargin;}
 
-	private int _RightMargin;
-	public int getRightMargin(){return _RightMargin;}
-	public void setRightMargin(int RightMargin){_RightMargin=RightMargin;}
+	private int RightMargin;
+	public int getRightMargin(){return RightMargin;}
+	public void setRightMargin(int RightMargin){this.RightMargin=RightMargin;}
 
-	private int _TopMargin;
-	public int getTopMargin(){return _TopMargin;}
-	public void setTopMargin(int TopMargin){_TopMargin=TopMargin;}
+	private int TopMargin;
+	public int getTopMargin(){return TopMargin;}
+	public void setTopMargin(int TopMargin){this.TopMargin=TopMargin;}
 
-	private int _BottomMargin;
-	public int getBottomMargin(){return _BottomMargin;}
-	public void setBottomMargin(int BottomMargin){_BottomMargin=BottomMargin;}
+	private int BottomMargin;
+	public int getBottomMargin(){return BottomMargin;}
+	public void setBottomMargin(int BottomMargin){this.BottomMargin=BottomMargin;}
 
-	private int _Orientation;
-	public int getOrientation(){return _Orientation;}
-	public void setOrientation(int Orientation){_Orientation=Orientation;}
+	private int Orientation;
+	public int getOrientation(){return Orientation;}
+	public void setOrientation(int Orientation){this.Orientation=Orientation;}
 
-	private int _skipBlankPages;
-	public int getskipBlankPages(){return _skipBlankPages;}
-	public void setskipBlankPages(int skipBlankPages){_skipBlankPages=skipBlankPages;}
+	private int skipBlankPages;
+	public int getskipBlankPages(){return skipBlankPages;}
+	public void setskipBlankPages(int skipBlankPages){this.skipBlankPages=skipBlankPages;}
 
-	private int _Width;
-	public int getWidth(){return _Width;}
-	public void setWidth(int Width){_Width=Width;}
+	private int Width;
+	public int getWidth(){return Width;}
+	public void setWidth(int Width){this.Width=Width;}
 
-	private int _Height;
-	public int getHeight(){return _Height;}
-	public void setHeight(int Height){_Height=Height;}
+	private int Height;
+	public int getHeight(){return Height;}
+	public void setHeight(int Height){this.Height=Height;}
 
-	private int _XResolution;
-	public int getXResolution(){return _XResolution;}
-	public void setXResolution(int XResolution){_XResolution=XResolution;}
+	private int XResolution;
+	public int getXResolution(){return XResolution;}
+	public void setXResolution(int XResolution){this.XResolution=XResolution;}
 
-	private int _YResolution;
-	public int getYResolution(){return _YResolution;}
-	public void setYResolution(int YResolution){_YResolution=YResolution;}
+	private int YResolution;
+	public int getYResolution(){return YResolution;}
+	public void setYResolution(int YResolution){this.YResolution=YResolution;}
 
-	private int _PageIndex;
-	public int getPageIndex(){return _PageIndex;}
-	public void setPageIndex(int PageIndex){_PageIndex=PageIndex;}
+	private int PageIndex;
+	public int getPageIndex(){return PageIndex;}
+	public void setPageIndex(int PageIndex){this.PageIndex=PageIndex;}
   
-	private int _PageCount;
-	public int getPageCount(){return _PageCount;}
-	public void setPageCount(int PageCount){_PageCount=PageCount;}
+	private int PageCount;
+	public int getPageCount(){return PageCount;}
+	public void setPageCount(int PageCount){this.PageCount=PageCount;}
 
-	private String _ResultFile;
-	public String getResultFile(){return _ResultFile;}
-	public void setResultFile(String ResultFile){_ResultFile=ResultFile;}
+	private String ResultFile;
+	public String getResultFile(){return ResultFile;}
+	public void setResultFile(String ResultFile){this.ResultFile=ResultFile;}
 
 }

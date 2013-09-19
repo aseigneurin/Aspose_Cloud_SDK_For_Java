@@ -7,32 +7,32 @@
         /// <summary>
         /// Link Hresf
         /// </summary>
-        private String _Href;
-        public String getHref(){return _Href;}
-        public void setHref(String Href){_Href=Href;}
+        private String Href;
+        public String getHref(){return Href;}
+        public void setHref(String Href){this.Href=Href;}
 
 
         /// <summary>
         /// Link Rel
         /// </summary>
-        private String _Rel;
-        public String getRel(){return _Rel;}
-        public void setRel(String Rel){_Rel=Rel;}
+        private String Rel;
+        public String getRel(){return Rel;}
+        public void setRel(String Rel){this.Rel=Rel;}
 
 
         /// <summary>
         /// Link Title
         /// </summary>
-        private String _Title;
-        public String getTitle(){return _Title;}
-        public void setTitle(String Title){_Title=Title;}
+        private String Title;
+        public String getTitle(){return Title;}
+        public void setTitle(String Title){this.Title=Title;}
 
 
         /// <summary>
         /// Link Type
         /// </summary>
-        private String _Type;
-        public String getType(){return _Type;}
-        public void setType(String Type){_Type=Type;}
+        private String Type;
+        public String getType(){return Type;}
+        public void setType(String Type){this.Type=Type;}
 
     }

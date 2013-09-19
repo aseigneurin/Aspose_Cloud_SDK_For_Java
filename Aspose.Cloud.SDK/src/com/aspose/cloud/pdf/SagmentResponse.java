@@ -1,8 +1,8 @@
 package com.aspose.cloud.pdf;
 
 public class SagmentResponse {
-	private TextItem _TextItem;
-	public TextItem getTextItem(){return _TextItem;}
-	public void setTextItem(TextItem TextItem){_TextItem=TextItem;}
+	private TextItem TextItem;
+	public TextItem getTextItem(){return TextItem;}
+	public void setTextItem(TextItem TextItem){this.TextItem=TextItem;}
 
 }

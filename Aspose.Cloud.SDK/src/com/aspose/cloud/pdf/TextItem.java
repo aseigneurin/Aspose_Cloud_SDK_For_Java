@@ -16,9 +16,9 @@ public class TextItem
 {
     public TextItem() { }
 
-    private List<LinkResponse> _Links;
-    public List<LinkResponse> getLinks(){return _Links;}
-    public void setLinks(List<LinkResponse> Links){_Links=Links;}
+    private List<LinkResponse> Links;
+    public List<LinkResponse> getLinks(){return Links;}
+    public void setLinks(List<LinkResponse> Links){this.Links=Links;}
 
     private TextFormat Format;
     private String Text;

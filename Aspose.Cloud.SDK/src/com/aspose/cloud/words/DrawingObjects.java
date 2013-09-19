@@ -6,12 +6,12 @@ import java.util.List;
 
         public DrawingObjects() { }
 
-        private List<com.aspose.cloud.words.List> _List;
-        public List<com.aspose.cloud.words.List> getList(){return _List;}
-        public void setList(List<com.aspose.cloud.words.List> List){_List=List;}
+        private List<com.aspose.cloud.words.List> List;
+        public List<com.aspose.cloud.words.List> getList(){return List;}
+        public void setList(List<com.aspose.cloud.words.List> List){this.List=List;}
 
-        private LinkResponse _link;
-        public LinkResponse getlink(){return _link;}
-        public void setlink(LinkResponse link){_link=link;}
+        private LinkResponse link;
+        public LinkResponse getlink(){return link;}
+        public void setlink(LinkResponse link){this.link=link;}
 
     }

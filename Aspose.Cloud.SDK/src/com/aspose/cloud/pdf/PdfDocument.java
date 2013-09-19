@@ -1,16 +1,16 @@
 package com.aspose.cloud.pdf;
 
 public class PdfDocument {
-	private LinkResponse[] _Links;
-	public LinkResponse[] getLinks(){return _Links;}
-	public void setLinks(LinkResponse[] Links){_Links=Links;}
+	private LinkResponse[] Links;
+	public LinkResponse[] getLinks(){return Links;}
+	public void setLinks(LinkResponse[] Links){this.Links=Links;}
 
-	private DocumentPropertiesEnvelop _DocumentProperties;
-	public DocumentPropertiesEnvelop getDocumentProperties(){return _DocumentProperties;}
-	public void setDocumentProperties(DocumentPropertiesEnvelop DocumentProperties){_DocumentProperties=DocumentProperties;}
+	private DocumentPropertiesEnvelop DocumentProperties;
+	public DocumentPropertiesEnvelop getDocumentProperties(){return DocumentProperties;}
+	public void setDocumentProperties(DocumentPropertiesEnvelop DocumentProperties){this.DocumentProperties=DocumentProperties;}
 
-	private PagesEnvelop _Pages;
-	public PagesEnvelop getPages(){return _Pages;}
-	public void setPages(PagesEnvelop Pages){_Pages=Pages;}
+	private PagesEnvelop Pages;
+	public PagesEnvelop getPages(){return Pages;}
+	public void setPages(PagesEnvelop Pages){this.Pages=Pages;}
 
 }

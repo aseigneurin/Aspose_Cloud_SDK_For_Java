@@ -6,29 +6,29 @@ import java.util.List;
 
         public DrawingObject() { }
 
-        private LinkResponse _link;
-        public LinkResponse getlink(){return _link;}
-        public void setlink(LinkResponse link){_link=link;}
+        private LinkResponse link;
+        public LinkResponse getlink(){return link;}
+        public void setlink(LinkResponse link){this.link=link;}
 
-        private float _Height;
-        public float getHeight(){return _Height;}
-        public void setHeight(float Height){_Height=Height;}
+        private float Height;
+        public float getHeight(){return Height;}
+        public void setHeight(float Height){this.Height=Height;}
 
-        private LinkResponse _ImageDataLink;
-        public LinkResponse getImageDataLink(){return _ImageDataLink;}
-        public void setImageDataLink(LinkResponse ImageDataLink){_ImageDataLink=ImageDataLink;}
+        private LinkResponse ImageDataLink;
+        public LinkResponse getImageDataLink(){return ImageDataLink;}
+        public void setImageDataLink(LinkResponse ImageDataLink){this.ImageDataLink=ImageDataLink;}
 
-        private LinkResponse _OleDataLink;
-        public LinkResponse getOleDataLink(){return _OleDataLink;}
-        public void setOleDataLink(LinkResponse OleDataLink){_OleDataLink=OleDataLink;}
+        private LinkResponse OleDataLink;
+        public LinkResponse getOleDataLink(){return OleDataLink;}
+        public void setOleDataLink(LinkResponse OleDataLink){this.OleDataLink=OleDataLink;}
 
-        private List<LinkResponse> _RenderLinks;
-        public List<LinkResponse> getRenderLinks(){return _RenderLinks;}
-        public void setRenderLinks(List<LinkResponse> RenderLinks){_RenderLinks=RenderLinks;}
+        private List<LinkResponse> RenderLinks;
+        public List<LinkResponse> getRenderLinks(){return RenderLinks;}
+        public void setRenderLinks(List<LinkResponse> RenderLinks){this.RenderLinks=RenderLinks;}
 
-        private float _Width;
-        public float getWidth(){return _Width;}
-        public void setWidth(float Width){_Width=Width;}
+        private float Width;
+        public float getWidth(){return Width;}
+        public void setWidth(float Width){this.Width=Width;}
 
 
     }

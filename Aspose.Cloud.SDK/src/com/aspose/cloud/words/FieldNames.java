@@ -3,12 +3,12 @@ import java.util.List;
    
     public class FieldNames
     {
-    	private List<String> _Names;
-    	public List<String> getNames(){return _Names;}
-    	public void setNames(List<String> Names){_Names=Names;}
+    	private List<String> Names;
+    	public List<String> getNames(){return Names;}
+    	public void setNames(List<String> Names){this.Names=Names;}
 
-    	private LinkResponse _link;
-    	public LinkResponse getlink(){return _link;}
-    	public void setlink(LinkResponse link){_link=link;}
+    	private LinkResponse link;
+    	public LinkResponse getlink(){return link;}
+    	public void setlink(LinkResponse link){this.link=link;}
 
     }

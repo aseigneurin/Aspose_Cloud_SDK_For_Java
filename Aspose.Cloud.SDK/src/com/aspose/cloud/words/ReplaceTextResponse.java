@@ -2,20 +2,20 @@
 
     class ReplaceTextResponse
     {
-    	private int _Code;
-    	public int getCode(){return _Code;}
-    	public void setCode(int Code){_Code=Code;}
+    	private int Code;
+    	public int getCode(){return Code;}
+    	public void setCode(int Code){this.Code=Code;}
 
-    	private String _Status;
-    	public String getStatus(){return _Status;}
-    	public void setStatus(String Status){_Status=Status;}
+    	private String Status;
+    	public String getStatus(){return Status;}
+    	public void setStatus(String Status){this.Status=Status;}
 
-    	private int _Matches;
-    	public int getMatches(){return _Matches;}
-    	public void setMatches(int Matches){_Matches=Matches;}
+    	private int Matches;
+    	public int getMatches(){return Matches;}
+    	public void setMatches(int Matches){this.Matches=Matches;}
 
-    	private LinkResponse _DocumentLink;
-    	public LinkResponse getDocumentLink(){return _DocumentLink;}
-    	public void setDocumentLink(LinkResponse DocumentLink){_DocumentLink=DocumentLink;}
+    	private LinkResponse DocumentLink;
+    	public LinkResponse getDocumentLink(){return DocumentLink;}
+    	public void setDocumentLink(LinkResponse DocumentLink){this.DocumentLink=DocumentLink;}
 
     }

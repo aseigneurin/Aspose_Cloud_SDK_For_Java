@@ -19,9 +19,9 @@ public class Shape {
 	private String AlternativeText;
 	private float Height;
 	private boolean Hidden;
-	private String _Name;
-	public String getName(){return _Name;}
-	public void setName(String Name){_Name=Name;}
+	private String Name;
+	public String getName(){return Name;}
+	public void setName(String Name){this.Name=Name;}
 
 	private float Width;
 	private float X;

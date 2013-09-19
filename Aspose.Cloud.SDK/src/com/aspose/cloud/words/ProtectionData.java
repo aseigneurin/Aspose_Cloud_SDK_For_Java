@@ -1,8 +1,8 @@
 package com.aspose.cloud.words;
 
 public class ProtectionData {
-	private String _ProtectionType;
-	public String getProtectionType(){return _ProtectionType;}
-	public void setProtectionType(String ProtectionType){_ProtectionType=ProtectionType;}
+	private String ProtectionType;
+	public String getProtectionType(){return ProtectionType;}
+	public void setProtectionType(String ProtectionType){this.ProtectionType=ProtectionType;}
 
 }

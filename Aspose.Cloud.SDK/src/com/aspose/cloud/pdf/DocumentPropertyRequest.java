@@ -14,9 +14,9 @@ public class DocumentPropertyRequest extends com.aspose.cloud.common.BaseRespons
 {
     public DocumentPropertyRequest() { }
 
-    private DocumentPropertyValue _DocumentProperty;
-    public DocumentPropertyValue getDocumentProperty(){return _DocumentProperty;}
-    public void setDocumentProperty(DocumentPropertyValue DocumentProperty){_DocumentProperty=DocumentProperty;}
+    private DocumentPropertyValue DocumentProperty;
+    public DocumentPropertyValue getDocumentProperty(){return DocumentProperty;}
+    public void setDocumentProperty(DocumentPropertyValue DocumentProperty){this.DocumentProperty=DocumentProperty;}
 
 
 }
