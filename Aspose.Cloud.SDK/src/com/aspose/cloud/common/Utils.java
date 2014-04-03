@@ -66,6 +66,7 @@ public class Utils {
 				uri.setPath(tempUrl);
 			}
 			url = uri.toURI().toString();
+      url = url.replace("%2C", ",");
 
 			// get an hmac_sha1 key from the raw key bytes
 			SecretKeySpec signingKey = new SecretKeySpec(AsposeApp
@@ -121,6 +122,7 @@ public class Utils {
 				uri.setPath(tempUrl);
 			}
 			url = uri.toURI().toString();
+      url = url.replace("%2C", ",");
 
 			// get an hmac_sha1 key from the raw key bytes
 			SecretKeySpec signingKey = new SecretKeySpec(AppKey.getBytes(),
