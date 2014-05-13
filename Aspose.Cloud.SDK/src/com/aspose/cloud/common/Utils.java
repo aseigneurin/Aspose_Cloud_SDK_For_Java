@@ -222,11 +222,13 @@ public class Utils {
 
 	public static InputStream ProcessCommand(String strURI,
 			String strHttpCommand, String strContent) {
+		
+		URL address = null;
+		HttpURLConnection httpCon = null;
 
 		try {
-
-			URL address = new URL(strURI);
-			HttpURLConnection httpCon = (HttpURLConnection) address
+			address = new URL(strURI);
+			httpCon = (HttpURLConnection) address
 					.openConnection();
 			httpCon.setDoOutput(true);
 			httpCon.setRequestProperty("Content-Type", "application/json");
@@ -237,12 +239,12 @@ public class Utils {
 					httpCon.getOutputStream());
 			out.write(strContent);
 			out.close();
-			String d = httpCon.getResponseMessage();
-			System.out.println(d);
 
 			return httpCon.getInputStream();
 		} catch (Exception Ex) {
-
+			InputStream error = httpCon.getErrorStream();
+			String s = Utils.StreamToString(error);
+			System.out.println(s);
 			Ex.printStackTrace();
 			return null;
 		}
@@ -251,10 +253,14 @@ public class Utils {
 
 	public static InputStream ProcessCommand(String strURI,
 			String strHttpCommand, InputStream strContent) {
+		
+		URL address = null;
+		HttpURLConnection httpCon = null;
+		
 		try {
 			byte[] bytes = IOUtils.toByteArray(strContent);
-			URL address = new URL(strURI);
-			HttpURLConnection httpCon = (HttpURLConnection) address
+			address = new URL(strURI);
+			httpCon = (HttpURLConnection) address
 					.openConnection();
 			httpCon.setDoOutput(true);
 
@@ -268,12 +274,12 @@ public class Utils {
 			out.write(bytes);
 			out.flush();
 
-			String d = httpCon.getResponseMessage();
-			System.out.println(d);
-
 			return httpCon.getInputStream();
 		} catch (Exception Ex) {
-
+			InputStream error = httpCon.getErrorStream();
+			String s = Utils.StreamToString(error);
+			System.out.println(s);
+			
 			Ex.printStackTrace();
 			return null;
 		}
@@ -281,31 +287,49 @@ public class Utils {
 	}
 
 	public static InputStream ProcessCommand(String strURI,
-			String strHttpCommand) throws Exception {
+			String strHttpCommand)  {
+		
+		URL address = null;
+		HttpURLConnection httpCon = null;
+		
+		try{
+			address = new URL(strURI);
+			httpCon = (HttpURLConnection) address
+					.openConnection();
+			httpCon.setDoOutput(true);
+			httpCon.setRequestProperty("Content-Type", "application/json");
+			httpCon.setRequestProperty("Accept", "text/json");
+			httpCon.setRequestMethod(strHttpCommand);
+			if (strHttpCommand.equals("PUT") || strHttpCommand.equals("POST"))
+				httpCon.setFixedLengthStreamingMode(0);
+			
+			return httpCon.getInputStream();
+			
+		} catch (Exception ex) {
+			InputStream error = httpCon.getErrorStream();
+			String s = Utils.StreamToString(error);
+			System.out.println(s);
+			
+			ex.printStackTrace();
+			return null;
+		}
 
-		URL address = new URL(strURI);
-		HttpURLConnection httpCon = (HttpURLConnection) address
-				.openConnection();
-		httpCon.setDoOutput(true);
-		httpCon.setRequestProperty("Content-Type", "application/json");
-		httpCon.setRequestProperty("Accept", "text/json");
-		httpCon.setRequestMethod(strHttpCommand);
-		if (strHttpCommand.equals("PUT") || strHttpCommand.equals("POST"))
-			httpCon.setFixedLengthStreamingMode(0);
-		String d = httpCon.getResponseMessage();
-		System.out.println(d);
-		return httpCon.getInputStream();
+		
 
 	}
 
 	public static InputStream ProcessCommand(String strURI,
 			String strHttpCommand, String strContent, String ContentType) {
+		
+		URL address = null;
+		HttpURLConnection httpCon = null;
+		
 		try {
 
 			byte[] arr = strContent.getBytes();
 
-			URL address = new URL(strURI);
-			HttpURLConnection httpCon = (HttpURLConnection) address
+			address = new URL(strURI);
+			httpCon = (HttpURLConnection) address
 					.openConnection();
 			httpCon.setDoOutput(true);
 
@@ -320,13 +344,14 @@ public class Utils {
 
 			java.io.OutputStream out = httpCon.getOutputStream();
 			out.write(arr);
-			out.flush();
-
-			String d = httpCon.getResponseMessage();
-			System.out.println(d);
+			out.flush();			
 
 			return httpCon.getInputStream();
 		} catch (Exception Ex) {
+			InputStream error = httpCon.getErrorStream();
+			String s = Utils.StreamToString(error);
+			System.out.println(s);
+			
 			Ex.printStackTrace();
 			return null;
 		}
