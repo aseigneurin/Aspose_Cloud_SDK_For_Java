@@ -1,4 +1,4 @@
-﻿package com.aspose.cloud.words;
+package com.aspose.cloud.words;
 
 import com.aspose.cloud.common.AsposeApp;
 import com.aspose.cloud.common.Product;

@@ -1,4 +1,4 @@
-﻿package com.aspose.cloud.cells;
+package com.aspose.cloud.cells;
 
     /// <summary>
     ///  Represents response from the Conditional Formatting resource

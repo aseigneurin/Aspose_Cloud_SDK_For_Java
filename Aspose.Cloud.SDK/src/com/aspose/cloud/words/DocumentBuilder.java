@@ -1,4 +1,4 @@
-﻿package com.aspose.cloud.words;
+package com.aspose.cloud.words;
 
 import java.io.InputStream;
 

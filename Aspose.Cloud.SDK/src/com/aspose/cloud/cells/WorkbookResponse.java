@@ -1,4 +1,4 @@
-﻿package com.aspose.cloud.cells;
+package com.aspose.cloud.cells;
 
 public class WorkbookResponse extends com.aspose.cloud.common.BaseResponse
     {

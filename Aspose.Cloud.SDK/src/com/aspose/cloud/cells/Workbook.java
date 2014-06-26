@@ -1,4 +1,4 @@
-﻿package com.aspose.cloud.cells;
+package com.aspose.cloud.cells;
 
 import java.io.InputStream;
 import java.util.List;

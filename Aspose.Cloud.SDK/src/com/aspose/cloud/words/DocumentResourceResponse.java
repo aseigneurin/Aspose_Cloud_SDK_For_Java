@@ -1,4 +1,4 @@
-﻿package com.aspose.cloud.words;
+package com.aspose.cloud.words;
 
     public class DocumentResourceResponse extends com.aspose.cloud.common.BaseResponse
     {
