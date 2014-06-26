@@ -12,6 +12,7 @@ import java.io.OutputStream;
 import java.security.SignatureException;
 import java.util.List;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 
 import com.aspose.cloud.common.AsposeAppNonStatic;
@@ -612,17 +613,7 @@ public class Folder {
 
 			// write the inputStream to a FileOutputStream
 			OutputStream out = new FileOutputStream(new File(FileNameWithPath));
-
-			int read = 0;
-			byte[] bytes = new byte[8192];
-
-			while ((read = inputStream.read(bytes)) != -1) {
-				out.write(bytes, 0, read);
-			}
-
-			inputStream.close();
-			out.flush();
-			out.close();
+			IOUtils.copy(inputStream, out);
 			return true;
 
 		} catch (IOException e) {
